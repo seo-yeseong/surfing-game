@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>파도 2000</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game" aria-label="서핑 게임 화면"></canvas>
+
+  <div id="hud">
+    <div class="hud-row">
+      <div class="hearts" id="hearts" aria-label="남은 목숨"></div>
+      <div class="dist"><span id="distNum">0</span><small> / 2000 m</small></div>
+      <button id="pauseBtn" aria-label="일시정지">II</button>
+    </div>
+    <div class="bar" id="bar">
+      <div class="fill" id="barFill"></div>
+      <div class="tick" style="left:25%"></div><div class="tick" style="left:50%"></div><div class="tick" style="left:75%"></div>
+      <div class="surfer" id="barSurfer"></div>
+    </div>
+    <div class="sub"><span id="stars">불가사리 0</span><span id="jumpInd"><i class="jf" id="jumpFill"></i><span>점프</span></span></div>
+  </div>
+  <div id="toast"></div>
+
+  <div class="overlay on" id="menu">
+    <div class="card">
+      <h1>파도 2000</h1>
+      <p>파도를 타고 2000m를 끝까지 달리면 클리어예요. 갈수록 빨라지고 장애물이 촘촘해져요. 목숨은 세 개.</p>
+      <dl class="legend">
+        <dt>피하기</dt><dd>바위, 상어, 다른 서퍼</dd>
+        <dt>점프로 넘기</dt><dd>통나무, 부표, 해파리</dd>
+        <dt>조작</dt><dd>← → 또는 A D로 이동, 스페이스로 점프, P로 일시정지</dd>
+      </dl>
+      <button class="btn" id="startBtn">출발하기</button>
+      <div class="best" id="bestMenu"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="pause">
+    <div class="card">
+      <h2>잠시 멈춤</h2>
+      <p>준비되면 다시 파도에 올라타세요.</p>
+      <button class="btn" id="resumeBtn">계속하기</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="over">
+    <div class="card">
+      <h2>와이프아웃!</h2>
+      <p id="overText"></p>
+      <div class="stats">
+        <div class="stat"><b id="overDist">0 m</b><span>이번 기록</span></div>
+        <div class="stat"><b id="overBest">0 m</b><span>최고 기록</span></div>
+      </div>
+      <button class="btn" id="retryBtn">다시 타기</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="clear">
+    <div class="card">
+      <h2 id="clearTitle">2000m 완주!</h2>
+      <p id="clearText"></p>
+      <div class="stats">
+        <div class="stat"><b id="clearTime">0:00</b><span>완주 시간</span></div>
+        <div class="stat"><b id="clearBestTime">-</b><span>최단 기록</span></div>
+        <div class="stat"><b id="clearHearts">3</b><span>남은 목숨</span></div>
+        <div class="stat"><b id="clearStars">0</b><span>불가사리</span></div>
+      </div>
+      <button class="btn" id="againBtn">다시 타기</button>
+    </div>
+  </div>
+
+  <div id="touch">
+    <div class="tgroup">
+      <button class="tbtn" id="tLeft" aria-label="왼쪽">◀</button>
+      <button class="tbtn" id="tRight" aria-label="오른쪽">▶</button>
+    </div>
+    <button class="tbtn jump" id="tJump" aria-label="점프">점프</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
